@@ -1,0 +1,14 @@
+extends header.jade
+
+block bcontent
+  h3 APK
+  p.lead= original_name
+  h3 Top Libraries
+  p.lead= libs
+  h3 Other codes that belong to third-party libraries
+  p.lead= routes
+  h3 RAW Results
+  button.btn.btn-primary.show-raw Click to Show/Hide Raw Results
+  br
+  br
+  pre.raw= raw

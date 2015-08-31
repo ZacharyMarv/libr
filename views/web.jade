@@ -1,0 +1,15 @@
+extends header.jade
+
+block bcontent
+  h1.cover-heading Scanning APK.
+  p.lead
+    | Lib Radar is an automatic tool for Android library detection. 
+    | Upload your apk file and you will see how many libraries that the Android app use.
+  p.lead
+  center
+    br
+    form.input-group(method='post', action='/file/uploading', enctype='multipart/form-data')
+      input.form-control(name='inputFile', type='file')
+      br
+      br
+      input.btn-lg.btn-default(name='btnUp', type='submit',value='Upload')

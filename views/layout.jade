@@ -1,0 +1,15 @@
+doctype html
+html(lang='zh-CN')
+  head
+    meta(charset='utf-8')
+    title= title
+    link(rel='stylesheet', href='//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='icon', type='image/png', href='/radar.png')
+  body
+    block content
+    // Placed at the end of the document so the pages load faster
+    script(src='//cdn.bootcss.com/jquery/1.11.3/jquery.min.js')
+    script(src='//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js')
+    script(type='text/javascript').
+      $(document).ready(function(){$('.raw').hide();$('.show-raw').click(function(){$('.raw').toggle();});});
