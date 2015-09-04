@@ -58,7 +58,9 @@ router.post('/file/uploading', function(req, res, next){
 	
 	var exec = require('child_process').exec;
 	//console.log(__dirname)
-	var cmdStr = 'python /Users/marchon/Projects/NodeProjects/libr/lib-radar/get_b_hash/get_hash.py ' + path.join(__dirname,'.'+dstPath);
+
+	pcwd = process.cwd()
+	var cmdStr = 'python '+ pcwd +'/LibRadar/main/detect.py ' + path.join(__dirname,'.'+dstPath);
 	exec(cmdStr, function(err, stdout, stderr){
 		
 		//console.log(cmdStr);
@@ -66,7 +68,8 @@ router.post('/file/uploading', function(req, res, next){
 			console.log('Error' + cmdStr);
 			res.render('result', {title: 'Error Occurred', libs: 'None', raw: stderr});
 		} else {
-			var sp = stdout.split('--Spliter--');
+			//console.log(pcwd);
+			var sp = stdout.split('--Splitter--');
 			var apktool = sp[0];
 			var libs = sp[1];
 			if(libs.trim() == "") {
