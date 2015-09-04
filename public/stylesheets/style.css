@@ -20,6 +20,11 @@ a:hover {
   border: 1px solid #fff;
 }
 
+div.masthead.clearfix ,
+.mastfoot {
+  background-color: rgba(50, 50, 50, 0.93);
+}
+
 .btn input{
 	width:20px;
 }
