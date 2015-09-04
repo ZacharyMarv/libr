@@ -2,11 +2,44 @@ var express = require('express');
 var router = express.Router();
 var multiparty = require('multiparty');
 var util = require('util');
+var log4js = require('log4js');
 var fs = require('fs');
 var path = require('path');
 
+log4js.configure({
+	appenders: [
+		{ type: 'console' }, //控制台输出
+		{
+			type: 'file', //文件输出
+			filename: 'logs/ip_access.log',
+			maxLogSize: 1024,
+			backups:3,
+			category: 'ip'
+		},
+		{
+			type: 'file', //文件输出
+			filename: 'logs/result.log',
+			maxLogSize: 1024,
+			backups:3,
+			category: 'res'
+		}
+	]
+});
+
+ip_log = log4js.getLogger("ip");
+res_log = log4js.getLogger("res");
+
+/* Get IP */
+function getClientIp(req) {
+	return req.headers['x-forwarded-for'] ||
+		req.connection.remoteAddress ||
+		req.socket.remoteAddress ||
+		req.connection.socket.remoteAddress;
+};
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
+	ip_log.trace(getClientIp(req));
 	res.render('web', { title: 'Lib Radar' });
 });
 
@@ -33,6 +66,7 @@ router.get('/radar', function(req, res, next) {
 /*上传处理*/
 router.post('/file/uploading', function(req, res, next){
   //生成multiparty对象，并配置下载目标路径
+  res_log.warn(getClientIp(req));
   var form = new multiparty.Form({uploadDir: './public/files/'});
   //下载后处理
   form.parse(req, function(err, fields, files) {
@@ -69,6 +103,7 @@ router.post('/file/uploading', function(req, res, next){
 			res.render('result', {title: 'Error Occurred', libs: 'None', raw: stderr});
 		} else {
 			//console.log(pcwd);
+			res_log.info(stdout);
 			var sp = stdout.split('--Splitter--');
 			var apktool = sp[0];
 			var libs = sp[1];
