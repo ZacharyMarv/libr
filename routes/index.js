@@ -6,6 +6,11 @@ var log4js = require('log4js');
 var fs = require('fs');
 var path = require('path');
 
+// Mkdir logs
+if (!fs.existsSync('logs')) {
+	fs.mkdirSync('logs');
+}
+// Log Configure.
 log4js.configure({
 	appenders: [
 		{ type: 'console' }, //控制台输出
@@ -22,12 +27,21 @@ log4js.configure({
 			maxLogSize: 1024,
 			backups:3,
 			category: 'res'
+		},
+		{
+			type: 'file', //文件输出
+			filename: 'logs/app.log',
+			maxLogSize: 1024,
+			backups:3,
+			category: 'app'
 		}
 	]
 });
 
 ip_log = log4js.getLogger("ip");
 res_log = log4js.getLogger("res");
+/* App Name Mapping */
+app_log = log4js.getLogger("app");
 
 /* Get IP */
 function getClientIp(req) {
@@ -65,44 +79,34 @@ router.get('/radar', function(req, res, next) {
 
 /*上传处理*/
 router.post('/file/uploading', function(req, res, next){
+	ip_log.warn(getClientIp(req));
   //生成multiparty对象，并配置下载目标路径
   res_log.warn(getClientIp(req));
   var form = new multiparty.Form({uploadDir: './public/files/'});
   //下载后处理
   form.parse(req, function(err, fields, files) {
-    var filesTmp = JSON.stringify(files,null,2);
+    var filesTmp = JSON.stringify(files, null, 2);
     var file_original_name = "";
     if(err){
       console.log('parse error: ' + err);
     } else {
-      console.log('parse files: ' + filesTmp);
       var inputFile = files.inputFile[0];
       var uploadedPath = inputFile.path;
-      var dstPath = './public/files/' + inputFile.originalFilename;
 	  file_original_name = inputFile.originalFilename;
-      //重命名为真实文件名
-      fs.rename(uploadedPath, dstPath, function(err) {
-        if(err){
-          console.log('rename error: ' + err);
-        } else {
-          console.log('rename ok');
-        }
-      });
+	  app_log.warn(uploadedPath + "," + getClientIp(req) + "," + file_original_name);
     }
 	
 	var exec = require('child_process').exec;
 	//console.log(__dirname)
 
 	pcwd = process.cwd()
-	var cmdStr = 'python '+ pcwd +'/LibRadar/main/detect.py ' + path.join(__dirname,'.'+dstPath);
+	var cmdStr = 'python '+ pcwd +'/LibRadar/main/detect.py ' + pcwd + '/' + uploadedPath;
+	  console.log(cmdStr);
 	exec(cmdStr, function(err, stdout, stderr){
-		
-		//console.log(cmdStr);
 		if (err) {
 			console.log('Error' + cmdStr);
 			res.render('result', {title: 'Error Occurred', libs: 'None', raw: stderr});
 		} else {
-			//console.log(pcwd);
 			res_log.info(stdout);
 			var sp = stdout.split('--Splitter--');
 			var apktool = sp[0];
@@ -116,21 +120,6 @@ router.post('/file/uploading', function(req, res, next){
 			}
 			res.render('result', {title: 'Lib Radar Result', original_name: file_original_name, apktool: apktool, libs: libs , routes: routes, raw: stdout});
 		}
-		/*
-	    res.writeHead(200, {'content-type': 'text/plain;charset=utf-8'});
-	    res.write('received upload:\n');
-		
-		if (err) {
-			console.log('Error' + cmdStr);
-		}
-		else {
-			console.log('This is from Node.')
-			var data = stdout;
-			console.log(data);
-			res.write(data);
-		}
-	
-	    res.end(util.inspect({fields: fields, files: filesTmp}));*/
 	});
 	
 	
