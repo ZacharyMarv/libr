@@ -7,7 +7,7 @@
 a,
 a:focus,
 a:hover {
-  color: #fff;
+  color: #222;
 }
 
 /* Custom default button */
@@ -16,13 +16,25 @@ a:hover {
 .btn-default:focus {
   color: #333;
   text-shadow: none; /* Prevent inheritence from `body` */
-  background-color: #fff;
-  border: 1px solid #fff;
+  background-color: #000;
+  border: 1px solid #202;
 }
 
-div.masthead.clearfix ,
-.mastfoot {
-  background-color: rgba(50, 50, 50, 0.93);
+div.masthead {
+
+  background-color: #f7f7f7;
+  -webkit-box-shadow: inset 0 0 70px rgba(144,144,144,.5);
+  box-shadow: inset 0px 20px 30px 10px rgba(144,144,144,.3);
+  /*background-color: rgba(225, 225, 225, 0.93);*/
+
+}
+
+
+div.mastfoot {
+
+  background-color: #f7f7f7;
+  -webkit-box-shadow: inset 0 0 70px rgba(144,144,144,.5);
+  box-shadow: inset 0px -20px 30px rgba(144,144,144,.3);
 }
 
 .btn input{
@@ -36,12 +48,12 @@ div.masthead.clearfix ,
 html,
 body {
   height: 100%;
-  background-color: #333;
+  background-color: #f7f7f7;
 }
 body {
-  color: #fff;
+  color: #000;
   /* text-align: center; */
-  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+  text-shadow: 0 1px 3px rgba(255,200,200,.5);
 }
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
@@ -50,8 +62,8 @@ body {
   width: 100%;
   height: 100%; /* For at least Firefox */
   min-height: 100%;
-  -webkit-box-shadow: inset 0 0 100px rgba(0,0,0,.5);
-          box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+  -webkit-box-shadow: inset 0 0 70px rgba(144,144,144,.5);
+          box-shadow: inset 0 0 70px rgba(144,144,144,.5);
 }
 .site-wrapper-inner {
   display: table-cell;
@@ -88,20 +100,20 @@ body {
   font-size: 16px;
   font-weight: bold;
   color: #fff; /* IE8 proofing */
-  color: rgba(255,255,255,.75);
+  color: rgba(25,25,25,.75);
   border-bottom: 2px solid transparent;
 }
 .masthead-nav > li > a:hover,
 .masthead-nav > li > a:focus {
   background-color: transparent;
   border-bottom-color: #a9a9a9;
-  border-bottom-color: rgba(255,255,255,.25);
+  border-bottom-color: rgba(25,25,25,.75);
 }
 .masthead-nav > .active > a,
 .masthead-nav > .active > a:hover,
 .masthead-nav > .active > a:focus {
-  color: #fff;
-  border-bottom-color: #fff;
+  color: #000;
+  border-bottom-color: #121;
 }
 
 @media (min-width: 768px) {
@@ -133,7 +145,7 @@ body {
 
 .mastfoot {
   color: #999; /* IE8 proofing */
-  color: rgba(255,255,255,.5);
+  color: rgba(25,25,25,.5);
 }
 
 
