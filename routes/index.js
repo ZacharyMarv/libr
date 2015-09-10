@@ -10,6 +10,10 @@ var path = require('path');
 if (!fs.existsSync('logs')) {
 	fs.mkdirSync('logs');
 }
+// Mkdir Files.
+if (!fs.existsSync('public/files')) {
+	fs.mkdirSync('public/files');
+}
 // Log Configure.
 log4js.configure({
 	appenders: [
@@ -63,6 +67,10 @@ router.get('/express', function(req, res, next) {
 
 router.get('/features', function(req, res, next) {
 	res.render('features', {title: 'Features'});
+})
+
+router.get('/top_libs', function(req, res, next) {
+	res.render('top_libs', {title: 'Top Libs'});
 })
 
 router.get('/contact', function(req, res, next) {
