@@ -6,10 +6,28 @@ block bcontent
     | Lib Radar is an automatic tool for Android library detection. 
     | Upload your apk file and you will see how many libraries that the Android app use.
   p.lead
-  center
-    br
-    form.input-group(method='post', action='/file/uploading', enctype='multipart/form-data')
-      input.form-control(name='inputFile', type='file')
-      br
-      br
-      input.btn-lg.btn-default(name='btnUp', type='submit',value='Upload')
+  div#inputer_div
+    script(type='text/javascript').
+      function on_file_change() {
+        var path = document.getElementById("inputer").value;
+        var depth = path.split('\\').length;
+        var filename = path.split('\\')[depth-1];
+        var file_depth = filename.split('.').length;
+        var typename = filename.split('.')[file_depth-1];
+        if (typename != "apk") {
+          document.getElementById("control-label").textContent = "Warning: Not an apk file.";
+          document.getElementById("inputer_div").className='has-warning'
+          document.getElementById("up_btn").className='btn btn-warning'
+        } else {
+          document.getElementById("control-label").textContent = "You are going to upload an apk file.";
+          document.getElementById("inputer_div").className='has-success'
+          document.getElementById("up_btn").className='btn btn-success'
+        }
+      }
+    label.control-label#control-label
+    form.form-inline.input-group(method='post', action='/file/uploading', enctype='multipart/form-data')
+      .form-group
+        .input-group
+         .input-group-addon APK File:
+         input.form-control#inputer(name='inputFile', type='file', onchange='on_file_change()')
+      input.btn.btn-primary#up_btn(name='btnUp', type='submit',value='Upload') 
