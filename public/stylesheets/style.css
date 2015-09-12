@@ -130,9 +130,7 @@ body {
  * Cover
  */
 
-.cover {
-  padding: 80px 20px;
-}
+
 .cover .btn-lg {
   padding: 10px 20px;
   font-weight: bold;
@@ -153,7 +151,11 @@ body {
  * Affix and center
  */
 
+/* 小屏幕（平板，大于等于 768px） */
 @media (min-width: 768px) {
+  .cover {
+    padding: 80px 20px;
+  }
   /* Pull out the header and footer */
   .masthead {
     position: fixed;
@@ -179,7 +181,8 @@ body {
   .masthead,
   .mastfoot,
   .cover-container {
-    width: 700px;
+    /* change Max width to 992px */
+    width: 992px;
   }
 }
 
