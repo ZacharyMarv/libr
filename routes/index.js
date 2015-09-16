@@ -58,7 +58,7 @@ function getClientIp(req) {
 /* GET home page. */
 router.get('/', function(req, res, next) {
 	ip_log.trace(getClientIp(req));
-	res.render('web', { title: 'Lib Radar' });
+	res.render('web', { title: 'LibRadar' });
 });
 
 router.get('/express', function(req, res, next) {
@@ -82,7 +82,7 @@ router.get('/upload', function(req, res, next) {
 });
 
 router.get('/radar', function(req, res, next) {
-	res.render('web', {title: 'Lib Radar'});
+	res.render('web', {title: 'LibRadar'});
 })
 
 /*上传处理*/
@@ -126,7 +126,7 @@ router.post('/file/uploading', function(req, res, next){
 			if(routes.trim() == "") {
 				routes = "None.";
 			}
-			res.render('result', {title: 'Lib Radar Result', original_name: file_original_name, apktool: apktool, libs: libs , routes: routes, raw: stdout});
+			res.render('result', {title: 'LibRadar Result', original_name: file_original_name, apktool: apktool, libs: libs , routes: routes, raw: stdout});
 		}
 	});
 	
