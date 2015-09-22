@@ -109,7 +109,7 @@ router.post('/file/uploading', function(req, res, next){
 
 	pcwd = process.cwd()
 	  // !!Importanct replace '/Users/marchon/Projects/PycharmProjects' with pcwd
-	var cmdStr = 'python '+ '/Users/marchon/Projects/PycharmProjects' +'/LibRadar/main/detect.py ' + pcwd + '/' + uploadedPath;
+	var cmdStr = 'python '+ pcwd +'/LibRadar/main/detect.py ' + pcwd + '/' + uploadedPath;
 	  console.log(cmdStr);
 	exec(cmdStr, function(err, stdout, stderr){
 		if (err) {
