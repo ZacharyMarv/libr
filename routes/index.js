@@ -108,7 +108,7 @@ router.post('/file/uploading', function(req, res, next){
 	//console.log(__dirname)
 
 	pcwd = process.cwd()
-	var cmdStr = 'python '+ pcwd +'/LibRadar/main/detect.py ' + pcwd + '/' + uploadedPath;
+	var cmdStr = 'python '+ '/Users/marchon/Projects/PycharmProjects' +'/LibRadar/main/detect.py ' + pcwd + '/' + uploadedPath;
 	  console.log(cmdStr);
 	exec(cmdStr, function(err, stdout, stderr){
 		if (err) {
@@ -119,14 +119,18 @@ router.post('/file/uploading', function(req, res, next){
 			var sp = stdout.split('--Splitter--');
 			var apktool = sp[0];
 			var libs = sp[1];
-			if(libs.trim() == "") {
-				libs = "None.";
+			var liblist = [];
+			if(libs.trim() != "") {
+				//console.log(JSON.parse(libs));
+				liblist = JSON.parse(libs);
 			}
 			var routes = sp[2];
 			if(routes.trim() == "") {
-				routes = "None.";
+				routes = "";
+			} else {
+				routes = JSON.parse(routes);
 			}
-			res.render('result', {title: 'LibRadar Result', original_name: file_original_name, apktool: apktool, libs: libs , routes: routes, raw: stdout});
+			res.render('result', {title: 'LibRadar Result', original_name: file_original_name, apktool: apktool, libs: liblist , routes: routes, raw: stdout});
 		}
 	});
 	

@@ -4,9 +4,52 @@ block bcontent
   h3 APK
   p.lead= original_name
   h3 Top Libraries
-  p.lead= libs
+  table.table.table-responsive.table-hover
+    thead
+      tr
+        th Library Name
+        th Package Name
+        th Description in Chinese
+        th Library Type
+        th Permissions
+
+    - var local_libs = JSON.parse(libs)
+    tbody
+    each obj in local_libs
+      tr
+        td=obj['lib']
+        td=obj['pn']
+        td=obj['ch']
+        // Todo
+        td Development Aid
+        td
+          - var detailed_information = obj['p'].toString().replace(/,/g, ' ');
+          - if( !detailed_information == "")
+            button.btn.btn-sm.pop(rel="popover" data-content=detailed_information data-original-title="Detailed Permission Info") Details
+          - else
+            button.btn.btn-sm.pop(rel="popover" data-content="No Android Permission Used." data-original-title="Detailed Permission Info") None
   h3 Other codes that belong to third-party libraries
-  p.lead= routes
+  table.table.table-responsive.table-hover
+    thead
+      tr
+        th Package Name
+        th Original Package Name
+        th Repetitions
+        th Permissions
+    - var local_routes = JSON.parse(routes)
+    tbody
+    each obj in local_routes
+      tr
+        td=obj['sp']
+        td=obj['csp']
+        td=obj['dn']
+        td
+          - var detailed_information = obj['cp'].toString().replace(/,/g, ' ');
+          - if( !detailed_information == "")
+            button.btn.btn-sm.pop(rel="popover" data-content=detailed_information data-original-title="Detailed Permission Info") Details
+          - else
+            button.btn.btn-sm.pop(rel="popover" data-content="No Android Permission Used." data-original-title="Detailed Permission Info") None
+
   h3 RAW Results
   button.btn.btn-primary.show-raw Click to Show/Hide Raw Results
   br
