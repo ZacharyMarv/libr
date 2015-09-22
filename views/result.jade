@@ -22,10 +22,9 @@ block bcontent
           td=obj['lib']
           td=obj['pn']
           td=obj['ch']
-          // Todo
-          td Development Aid
+          td=obj['tp']
           td
-            - var detailed_information = obj['p'].toString().replace(/,/g, ' ');
+            - var detailed_information = obj['p'].toString().replace(/,/g, '    ');
             - if( !detailed_information == "")
               button.btn.btn-sm.pop(rel="popover" data-content=detailed_information data-original-title="Detailed Permission Info") Details
             - else

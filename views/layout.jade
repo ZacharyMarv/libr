@@ -15,7 +15,6 @@ html(lang='zh-CN')
       $(document).ready(
               function(){
                 //$('.raw').hide();$('.show-raw').click(function(){$('.raw').toggle();});
-                $(".pop").popover({placement:'left'});
+                $(".pop").popover({placement:'left', delay: {show: 100, hide: 100}});
               }
       );
-
