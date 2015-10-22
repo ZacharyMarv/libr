@@ -6,17 +6,33 @@ block content
       .cover-container
         .masthead.clearfix
           .inner
-            h3.masthead-brand= title
+            h3.masthead-brand LibRadar
             nav
               ul.nav.masthead-nav
-                li
-                  a(href='/') Home
-                li
-                  a(href='/features') Features
-                li.active
-                  a(href='/top_libs') Top Libs
-                li
-                  a(href='/contact') Contact
+                - if (title == 'LibRadar')
+                  li.active
+                    a(href='/') Home
+                - else
+                  li
+                    a(href='/') Home
+                - if (title == 'Features')
+                  li.active
+                    a(href='/features') Features
+                - else
+                  li
+                    a(href='/features') Features
+                - if (title == 'Top Libs')
+                  li.active
+                    a(href='/top_libs') Top Libs
+                - else
+                  li
+                    a(href='/top_libs') Top Libs
+                - if (title == 'Contact')
+                  li.active
+                    a(href='/contact') Contact
+                - else
+                  li
+                    a(href='/contact') Contact
         .inner.cover
           block bcontent
             
