@@ -109,7 +109,7 @@ router.post('/file/uploading', function(req, res, next){
 
 	pcwd = process.cwd()
 	  // !!Importanct replace '/Users/marchon/Projects/PycharmProjects' with pcwd
-	var cmdStr = 'python '+ pcwd +'/LibRadar/main/detect.py ' + pcwd + '/' + uploadedPath;
+	var cmdStr = 'python '+ pcwd +'/LibRadar/main/main.py ' + pcwd + '/' + uploadedPath;
 	  console.log(cmdStr);
 	exec(cmdStr, function(err, stdout, stderr){
 		if (err) {
@@ -120,6 +120,7 @@ router.post('/file/uploading', function(req, res, next){
 			var sp = stdout.split('--Splitter--');
 			var apktool = sp[0];
 			var libs = sp[1];
+			// console.log(sp[1]);
 			var liblist = [];
 			/*
 			if(libs.trim() != "") {
