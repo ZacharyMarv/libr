@@ -127,7 +127,7 @@ router.post('/file/uploading', function(req, res, next){
 				//console.log(JSON.parse(libs));
 				liblist = JSON.parse(libs);
 			}*/
-			var routes = sp[2];
+			//var routes = sp[2];
 			/*
 			if(routes.trim() == "") {
 				routes = "";
@@ -135,7 +135,7 @@ router.post('/file/uploading', function(req, res, next){
 				routes = JSON.parse(routes);
 			}*/
 			var time_consuming = sp[3];
-			res.render('result', {title: 'LibRadar Result', original_name: file_original_name, apktool: apktool, libs: libs , routes: routes, time_c: time_consuming, raw: stdout});
+			res.render('result', {title: 'LibRadar Result', original_name: file_original_name, apktool: apktool, libs: libs, time_c: time_consuming, raw: stdout});
 		}
 	});
 	
