@@ -1,9 +1,9 @@
-extends header.jade
+extends header_t.jade
 
 block bcontent
   h3 APK
   p.lead= original_name
-  h3 Top Libraries
+  h3 Libraries
   - var local_libs = JSON.parse(libs)
   - console.log(local_libs)
   - if (local_libs.length != 0)
@@ -12,7 +12,7 @@ block bcontent
         tr
           th Library Name
           th Package Name
-          th Description in Chinese
+          th Web Link
           th Library Type
           th Permissions
 
@@ -21,7 +21,16 @@ block bcontent
         tr
           td=obj['lib']
           td=obj['pn']
-          td=obj['ch']
+          td
+            - var web_link = obj['ch']
+            - if (web_link == "")
+              p &nbsp;
+            - else
+              - if (web_link.substr(0, 4) != "http") { web_link = 'http://' + web_link;
+                a(href= web_link) Link
+              - }
+              - else
+                a(href= web_link) Link
           td=obj['tp']
           td
             - var detailed_information = obj['p'].toString().replace(/,/g, '    ');
