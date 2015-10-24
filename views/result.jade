@@ -13,16 +13,29 @@ block bcontent
           th Library Name
           th Common Package Name
           th Current Package Name
-          th Web Link
           th Library Type
+          th Popularity
+          th Web Link
           th Permissions
 
       tbody
       each obj in local_libs
         tr
           td= obj['lib']
-          td= obj['pn']
-          td= obj['cpn']
+          - if (obj['pn'].length > 32) {
+            td
+              p.long_pn(data-toggle='tooltip' title=obj['pn'].toString().replace(/\//g,' / '))= obj['pn'].substr(0, 30) + '...'
+          -}
+          - else
+            td= obj['pn']
+          - if (obj['cpn'].length > 32) {
+            td
+              p.long_pn(data-toggle='tooltip' title=obj['cpn'].toString().replace(/\//g,' / '))= obj['cpn'].substr(0, 30) + '...'
+          -}
+          - else
+            td= obj['cpn']
+          td=obj['tp']
+          td= obj['dn']
           td
             - var web_link = obj['ch']
             - if (web_link == undefined || web_link == "")
@@ -33,15 +46,14 @@ block bcontent
               - }
               - else
                 a(href= web_link target="_blank") Link
-          td=obj['tp']
           td
             - var detailed_information = obj['p'].toString().replace(/,/g, '    ');
             - if( detailed_information != "")
-              button.btn.btn-sm.pop(rel="popover" data-content=detailed_information data-original-title="Detailed Permission Info") Details
+              button.pop(rel="popover" data-content=detailed_information data-original-title="Detailed Permission Info") Details
             - else
-              button.btn.btn-sm.pop(rel="popover" data-content="No Android Permission Used." data-original-title="Detailed Permission Info") None
+              button.pop(rel="popover" data-content="No Android Permission Used." data-original-title="Detailed Permission Info") None
   - else
     p None.
-  h3 Time Consuming
+  h3 Time Consumed
   //button.btn.btn-primary.show-raw Click to Show/Hide Raw Results
   pre.raw= time_c

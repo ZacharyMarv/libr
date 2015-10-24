@@ -18,5 +18,6 @@ html(lang='zh-CN')
               function(){
                 //$('.raw').hide();$('.show-raw').click(function(){$('.raw').toggle();});
                 $(".pop").popover({placement:'left', delay: {show: 100, hide: 100}});
+                $(function () { $("[data-toggle='tooltip']").tooltip(); });
               }
       );
