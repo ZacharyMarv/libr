@@ -211,3 +211,7 @@ body {
 	font-size:12px;
 	text-align:left;
 }
+/* Popover Content Font Size */
+div.popover-content {
+  font-size: x-small;
+}

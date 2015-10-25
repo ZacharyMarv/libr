@@ -17,7 +17,25 @@ html(lang='zh-CN')
       $(document).ready(
               function(){
                 //$('.raw').hide();$('.show-raw').click(function(){$('.raw').toggle();});
-                $(".pop").popover({placement:'left', delay: {show: 100, hide: 100}});
+                $(".pop").popover({placement:'left', delay: {show: 100, hide: 100}, html: true,
+                  title: function () {
+                    return $("#data-original-title").html();
+                  },
+                  content: function () {
+                    return $("#data-content").html();
+                  }});
                 $(function () { $("[data-toggle='tooltip']").tooltip(); });
+
+                $('body').click(function (event) {
+                  var target = $(event.target); // One jQuery object instead of 3
+                                    // Compare length with an integer rather than with
+                  if (!target.hasClass('popover')
+                          && !target.hasClass('pop')
+                          && !target.hasClass('popover-content')
+                          && !target.hasClass('popover-title')
+                          && !target.hasClass('arrow')) {
+                    $('.pop').popover('hide');
+                  }
+                });
               }
       );
