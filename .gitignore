@@ -3,6 +3,7 @@
 *.zip
 # Upload
 public/files
+public/files2
 # Logs
 logs
 *.log

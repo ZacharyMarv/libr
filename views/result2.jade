@@ -1,0 +1,57 @@
+h3 APK
+p.lead= original_name
+h3 Libraries
+- var local_libs = JSON.parse(libs)
+- console.log(local_libs)
+- if (local_libs.length != 0)
+  table.table.table-responsive.table-hover
+    thead
+      tr
+        th Library Name
+        th Common Package Name
+        th Current Package Name
+        th Library Type
+        th Popularity
+        th Web Link
+        th Permissions
+
+    tbody
+    each obj in local_libs
+      tr
+        td= obj['lib']
+        - if (obj['pn'].length > 32) {
+          td
+            p.long_pn(data-toggle='tooltip' title=obj['pn'].toString().replace(/\//g,' / '))= obj['pn'].substr(0, 30) + '...'
+        -}
+        - else
+          td= obj['pn']
+        - if (obj['cpn'].length > 32) {
+          td
+            p.long_pn(data-toggle='tooltip' title=obj['cpn'].toString().replace(/\//g,' / '))= obj['cpn'].substr(0, 30) + '...'
+        -}
+        - else
+          td= obj['cpn']
+        td=obj['tp']
+        td= obj['dn']
+        td
+          - var web_link = obj['ch']
+          - if (web_link == undefined || web_link == "")
+            p &nbsp;
+          - else
+            - if (web_link.substr(0, 4) != "http") { web_link = 'http://' + web_link;
+              a(href= web_link target="_blank") Link
+            - }
+            - else
+              a(href= web_link target="_blank") Link
+        td
+          - var detailed_information = obj['p'].toString().replace(/,/g, '    ');
+          - if( detailed_information != "")
+            button.pop(rel="popover" data-content=detailed_information data-original-title="Detailed Permission Info") Details
+          - else
+            button.pop(rel="popover" data-content="No Android Permission Used." data-original-title="Detailed Permission Info") None
+- else
+  p None.
+h3 Time Consumed
+//button.btn.btn-primary.show-raw Click to Show/Hide Raw Results
+pre.raw= time_c
+script(type='text/javascript').

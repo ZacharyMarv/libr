@@ -57,3 +57,33 @@ block bcontent
   h3 Time Consumed
   //button.btn.btn-primary.show-raw Click to Show/Hide Raw Results
   pre.raw= time_c
+  script(type='text/javascript').
+    $(document).ready(
+            function(){
+              // console.log("运行了尼玛！");
+                  //$('.raw').hide();$('.show-raw').click(function(){$('.raw').toggle();});
+              $(".pop").popover({placement:'left', trigger:'manual', delay: {show: 100, hide: 100}, html: true,
+                title: function () {
+                  return $("#data-original-title").html();
+                },
+                content: function () {
+                  return $("#data-content").html();
+                }});
+              $(function () { $("[data-toggle='tooltip']").tooltip(); });
+              $(".pop").click(function (event){
+                $('.pop').popover('hide');
+                $(this).popover('toggle');
+              });
+              $('body').click(function (event) {
+                var target = $(event.target); // One jQuery object instead of 3
+                                      // Compare length with an integer rather than with
+                if (!target.hasClass('popover')
+                        && !target.hasClass('pop')
+                        && !target.hasClass('popover-content')
+                        && !target.hasClass('popover-title')
+                        && !target.hasClass('arrow')) {
+                  $('.pop').popover('hide');
+                }
+              });
+            }
+    );
