@@ -101,51 +101,8 @@ router.post('/uploading', function(req, res, next){
 });
 
 
-
 /*上传处理Ajax*/
 router.post('/uploading2', function(req, res, next){
-    ip_log.warn(getClientIp(req));
-    //生成multiparty对象，并配置下载目标路径
-    res_log.warn(getClientIp(req));
-    var form = new multiparty.Form({uploadDir: './public/files2/'});
-    //下载后处理
-    form.parse(req, function(err, fields, files) {
-        var filesTmp = JSON.stringify(files, null, 2);
-        console.log(filesTmp);
-        var file_original_name = "";
-        if(err){
-            console.log('parse error: ' + err);
-        } else {
-
-            var inputFile = files.inputFile[0];
-            var uploadedPath = inputFile.path;
-            file_original_name = inputFile.originalFilename;
-            app_log.warn(uploadedPath + "," + getClientIp(req) + "," + file_original_name);
-        }
-        var exec = require('child_process').exec;
-        pcwd = process.cwd()
-        var cmdStr = 'python '+ pcwd +'/LibRadar/main/main.py ' + pcwd + '/' + uploadedPath;
-        console.log(cmdStr);
-        exec(cmdStr, function(err, stdout, stderr){
-            if (err) {
-                console.log('Error' + cmdStr);
-                res.render('result', {title: 'Error Occurred', libs: 'None', raw: stderr});
-            } else {
-                res_log.info(stdout);
-                var sp = stdout.split('--Splitter--');
-                var apktool = sp[0];
-                var libs = sp[1];
-                var time_consuming = sp[3];
-                res.render('result', {title: 'LibRadar Result', original_name: file_original_name, apktool: apktool, libs: libs, time_c: time_consuming, raw: stdout});
-            }
-        });
-    });
-});
-
-
-
-/*上传处理Ajax*/
-router.post('/uploading3', function(req, res, next){
     ip_log.warn(getClientIp(req));
     //生成multiparty对象，并配置下载目标路径
     res_log.warn(getClientIp(req));

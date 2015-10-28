@@ -48,7 +48,11 @@ function getClientIp(req) {
 /* GET home page. */
 router.get('/', function(req, res, next) {
 	ip_log.trace(getClientIp(req));
-	res.render('web', { title: 'LibRadar' });
+	res.render('web5', { title: 'LibRadar' });
+});
+
+router.get('/old_index', function(req, res, next) {
+	res.render('web', { title: 'LibRadar_old'});
 });
 
 router.get('/express', function(req, res, next) {
