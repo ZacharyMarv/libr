@@ -51,8 +51,8 @@ router.get('/', function(req, res, next) {
 	res.render('web5', { title: 'LibRadar' });
 });
 
-router.get('/old_index', function(req, res, next) {
-	res.render('web', { title: 'LibRadar_old'});
+router.get('/h4', function(req, res, next) {
+	res.render('web', { title: 'LibRadar_HTML4'});
 });
 
 router.get('/express', function(req, res, next) {

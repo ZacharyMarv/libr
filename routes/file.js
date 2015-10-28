@@ -5,8 +5,6 @@
 var express = require('express');
 var router = express.Router();
 var multiparty = require('multiparty');
-var path = require('path');
-var util = require('util');
 
 var log4js = require('log4js');
 var fs = require('fs');
