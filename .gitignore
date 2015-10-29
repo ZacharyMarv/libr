@@ -4,6 +4,7 @@
 # Upload
 public/files
 public/files2
+public/files3
 # Logs
 logs
 *.log
