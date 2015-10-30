@@ -64,7 +64,15 @@ router.get('/features', function(req, res, next) {
 })
 
 router.get('/top_libs', function(req, res, next) {
-	res.render('top_libs', {title: 'Top Libs'});
+	fs.readFile('public/data/top_libs.json',{encoding:'utf-8'},function(err, data) {
+		if (err) {
+			console.log(err);
+			res.render('error', {title: 'Top Libs Error', err: err});
+		} else {
+			// console.log(data);
+			res.render('top_libs', {title: 'Top Libs', top_libs: data});
+		}
+	});
 })
 
 router.get('/contact', function(req, res, next) {

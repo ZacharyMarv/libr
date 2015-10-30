@@ -1,0 +1,235 @@
+{
+  "top_libs": [
+    {
+      "link": "http://developer.android.com/reference/android/support/v4/app/package-summary.html",
+      "lib_name": "Android Support v4",
+      "pack_name": "android/support/v4",
+      "popularity": "515314",
+      "type": "Development Aid"
+    },
+    {
+      "link": "https://www.google.com/ads/",
+      "lib_name": "Google Ads",
+      "pack_name": "com/google/ads",
+      "popularity": "430019",
+      "type": "Advertisement"
+    },
+    {
+      "link": "https://developers.google.com/android/reference/com/google/android/gms/package-summary",
+      "lib_name": "Google GMS",
+      "pack_name": "com/google/android/gms",
+      "popularity": "248868",
+      "type": "Development Aid"
+    },
+    {
+      "link": "https://developers.facebook.com",
+      "lib_name": "Facebook",
+      "pack_name": "com/facebook",
+      "popularity": "114258",
+      "type": "Social Network"
+    },
+    {
+      "link": "https://www.google.com/analytics/",
+      "lib_name": "Google Analytics",
+      "pack_name": "com/google/analytics",
+      "popularity": "111171",
+      "type": "Mobile Analytics"
+    },
+    {
+      "link": "https://github.com/google/gson",
+      "lib_name": "Google Gson",
+      "pack_name": "com/google/gson",
+      "popularity": "99000",
+      "type": "Development Aid"
+    },
+    {
+      "link": "https://play.google.com",
+      "lib_name": "Google Play",
+      "pack_name": "com/android/vending",
+      "popularity": "92906",
+      "type": "App Market"
+    },
+    {
+      "link": "https://hc.apache.org/",
+      "lib_name": "Apache Http",
+      "pack_name": "org/apache/http",
+      "popularity": "88632",
+      "type": "Development Aid"
+    },
+    {
+      "link": "https://commons.apache.org/",
+      "lib_name": "Apache Common",
+      "pack_name": "org/apache/commons",
+      "popularity": "87285",
+      "type": "Development Aid"
+    },
+    {
+      "link": "https://developers.google.com/cloud-messaging/",
+      "lib_name": "Google GCM",
+      "pack_name": "com/google/android/gcm",
+      "popularity": "80224",
+      "type": "Development Aid"
+    },
+    {
+      "link": "http://actionbarsherlock.com/",
+      "lib_name": "ActionBarSherlock",
+      "pack_name": "com/actionbarsherlock",
+      "popularity": "78759",
+      "type": "Development Aid"
+    },
+    {
+      "link": "https://cordova.apache.org/",
+      "lib_name": "Apache Cordova",
+      "pack_name": "org/apache/cordova",
+      "popularity": "71182",
+      "type": "Development Aid"
+    },
+    {
+      "link": "https://squareup.com",
+      "lib_name": "SquareUp",
+      "pack_name": "com/squareup",
+      "popularity": "68528",
+      "type": "Payment"
+    },
+    {
+      "link": "http://flurry.com",
+      "lib_name": "Flurry",
+      "pack_name": "com/flurry",
+      "popularity": "58546",
+      "type": "Mobile Analytics"
+    },
+    {
+      "link": "http://twitter4j.org/",
+      "lib_name": "Twitter",
+      "pack_name": "twitter4j",
+      "popularity": "57285",
+      "type": "Social Network"
+    },
+    {
+      "link": "https://github.com/zxing/zxing",
+      "lib_name": "ZXing ('Zebra Crossing')",
+      "pack_name": "com/google/zxing",
+      "popularity": "55874",
+      "type": "Development Aid"
+    },
+    {
+      "link": "https://github.com/square/okhttp",
+      "lib_name": "OkHttp",
+      "pack_name": "com/squareup/okhttp",
+      "popularity": "47405",
+      "type": "Development Aid"
+    },
+    {
+      "link": "http://jsoup.org/",
+      "lib_name": "Jsoup",
+      "pack_name": "org/jsoup",
+      "popularity": "44660",
+      "type": "Development Aid"
+    },
+    {
+      "link": "https://developer.android.com/reference/android/support/v7/app/package-summary.html",
+      "lib_name": "Android Support v7",
+      "pack_name": "android/support/v7",
+      "popularity": "43679",
+      "type": "Development Aid"
+    },
+    {
+      "link": "https://github.com/JakeWharton/ViewPagerIndicator",
+      "lib_name": "Android Viewpagerindicator Widget",
+      "pack_name": "com/viewpagerindicator",
+      "popularity": "41446",
+      "type": "Development Aid"
+    },
+    {
+      "link": "http://james.apache.org",
+      "lib_name": "Apache James Mail Enterprise Serve",
+      "pack_name": "org/apache/james",
+      "popularity": "40813",
+      "type": "Development Aid"
+    },
+    {
+      "link": "https://www.revmobmobileadnetwork.com/",
+      "lib_name": "Revmob",
+      "pack_name": "com/revmob",
+      "popularity": "38211",
+      "type": "Advertisement"
+    },
+    {
+      "link": "https://play.google.com",
+      "lib_name": "Google Play",
+      "pack_name": "com/google/android/vending",
+      "popularity": "36802",
+      "type": "App Market"
+    },
+    {
+      "link": "http://www.millennialmedia.com/",
+      "lib_name": "millennialmedia",
+      "pack_name": "com/millennialmedia",
+      "popularity": "35795",
+      "type": "Advertisement"
+    },
+    {
+      "link": "http://inmobi.com",
+      "lib_name": "Inmobi",
+      "pack_name": "com/inmobi",
+      "popularity": "32018",
+      "type": "Advertisement"
+    },
+    {
+      "link": "https://github.com/nostra13/Android-Universal-Image-Loader",
+      "lib_name": "Nostra13 Image Loading",
+      "pack_name": "com/nostra13",
+      "popularity": "31739",
+      "type": "Utility"
+    },
+    {
+      "link": "http://www.fmod.org/",
+      "lib_name": "Fmod",
+      "pack_name": "org/fmod",
+      "popularity": "31688",
+      "type": "Game Engine"
+    },
+    {
+      "link": "http://www.slf4j.org/",
+      "lib_name": "SLF4J",
+      "pack_name": "org/slf4j",
+      "popularity": "30841",
+      "type": "Development Aid"
+    },
+    {
+      "link": "https://unity3d.com/",
+      "lib_name": "Unity3D",
+      "pack_name": "com/unity3d",
+      "popularity": "29940",
+      "type": "Game Engine"
+    },
+    {
+      "link": "http://www.xmlpull.org/",
+      "lib_name": "XML Pull",
+      "pack_name": "org/xmlpull",
+      "popularity": "28575",
+      "type": "Development Aid"
+    },
+    {
+      "link": "",
+      "lib_name": "ACRA",
+      "pack_name": "org/acra",
+      "popularity": "28501",
+      "type": "Development Aid"
+    },
+    {
+      "link": "http://code.google.com/p/google-gdata/",
+      "lib_name": "Google GData",
+      "pack_name": "com/google/gdata",
+      "popularity": "28232",
+      "type": "Development Aid"
+    },
+    {
+      "link": "http://www.kxml.org/",
+      "lib_name": "Kxml2",
+      "pack_name": "org/kxml2",
+      "popularity": "28173",
+      "type": "Development Aid"
+    }
+  ]
+}
