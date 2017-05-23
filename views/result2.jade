@@ -1,40 +1,48 @@
 h3 APK
 p.lead= original_name
 h3 Libraries
+
 - var local_libs = JSON.parse(libs)
 - console.log(local_libs)
 - if (local_libs.length != 0)
-  table.table.table-responsive.table-hover
+
+  table.bordered
     thead
       tr
-        th Library Name
-        th Common Package Name
-        th Current Package Name
-        th Library Type
+        th Library
+        th Package Name (In-Dataset)
+        th Package Name (In-App)
         th Popularity
-        th Web Link
-        th Permissions
-
+        th Match Ratio
+        th Type
+        th Website
     tbody
     each obj in local_libs
       tr
-        td= obj['lib']
-        - if (obj['pn'].length > 32) {
+        td= obj['Library']
+        - if (obj['Standard Package'].length > 32) {
           td
-            p.long_pn(data-toggle='tooltip' title=obj['pn'].toString().replace(/\//g,' / '))= obj['pn'].substr(0, 30) + '...'
+            p.long_pn(data-toggle='tooltip' title=obj['Standard Package'].toString().replace(/\//g,' / '))= obj['Standard Package'].substr(0, 30) + '...'
         -}
         - else
-          td= obj['pn']
-        - if (obj['cpn'].length > 32) {
+          td= obj['Package']
+        - if (obj['Standard Package'].length > 32) {
           td
-            p.long_pn(data-toggle='tooltip' title=obj['cpn'].toString().replace(/\//g,' / '))= obj['cpn'].substr(0, 30) + '...'
+            p.long_pn(data-toggle='tooltip' title=obj['Standard Package'].toString().replace(/\//g,' / '))= obj['Package'].substr(0, 30) + '...'
         -}
         - else
-          td= obj['cpn']
-        td=obj['tp']
-        td= obj['dn']
+          td= obj['Package']
+        td= obj['Popularity']
         td
-          - var web_link = obj['ch']
+          - var ratio = obj['Match Ratio']
+          - if (ratio == undefined || ratio == "")
+            p &nbsp
+          - else
+            #{ratio}
+        td= obj['Type']
+
+        td
+          - var web_link = obj['Website']
           - if (web_link == undefined || web_link == "")
             p &nbsp;
           - else
@@ -43,15 +51,11 @@ h3 Libraries
             - }
             - else
               a(href= web_link target="_blank") Link
-        td
-          - var detailed_information = obj['p'].toString().replace(/,/g, '    ');
-          - if( detailed_information != "")
-            button.pop(rel="popover" data-content=detailed_information data-original-title="Detailed Permission Info") Details
-          - else
-            button.pop(rel="popover" data-content="No Android Permission Used." data-original-title="Detailed Permission Info") None
+
+
 - else
-  p None.
-h3 Time Consumed
+  p No Library.
+h3 RAW
 //button.btn.btn-primary.show-raw Click to Show/Hide Raw Results
-pre.raw= time_c
+pre.raw= raw
 script(type='text/javascript').

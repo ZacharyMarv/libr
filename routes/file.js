@@ -124,7 +124,7 @@ router.post('/uploading2', function(req, res, next){
         }
         var exec = require('child_process').exec;
         pcwd = process.cwd()
-        var cmdStr = 'python '+ pcwd +'/LibRadar/main/main.py ' + pcwd + '/' + uploadedPath;
+        var cmdStr = 'python '+ pcwd +'/LibRadar/LibRadar/libradar.py ' + pcwd + '/' + uploadedPath;
         console.log(cmdStr);
         exec(cmdStr, function(err, stdout, stderr){
             if (err) {
@@ -132,11 +132,8 @@ router.post('/uploading2', function(req, res, next){
                 res.render('result', {title: 'Error Occurred', libs: 'None', raw: stderr});
             } else {
                 res_log.info(stdout);
-                var sp = stdout.split('--Splitter--');
-                var apktool = sp[0];
-                var libs = sp[1];
-                var time_consuming = sp[3];
-                res.render('result2', {title: 'LibRadar Result', original_name: file_original_name, apktool: apktool, libs: libs, time_c: time_consuming, raw: stdout});
+                var libs = stdout
+                res.render('result2', {title: 'LibRadar Result', original_name: file_original_name, libs: libs, raw: stdout});
             }
         });
     });
