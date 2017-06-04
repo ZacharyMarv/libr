@@ -116,11 +116,15 @@ router.post('/uploading2', function(req, res, next){
         if(err){
             console.log('parse error: ' + err);
         } else {
-
-            var inputFile = files.file[0];
-            var uploadedPath = inputFile.path;
-            file_original_name = inputFile.originalFilename;
-            app_log.warn(uploadedPath + "," + getClientIp(req) + "," + file_original_name);
+            if (files.file instanceof Array) {
+              var inputFile = files.file[0];
+              var uploadedPath = inputFile.path;
+              file_original_name = inputFile.originalFilename;
+              app_log.warn(uploadedPath + "," + getClientIp(req) + "," + file_original_name);
+            } else {
+              console.err('not Array!');
+              return;
+            }
         }
         var exec = require('child_process').exec;
         pcwd = process.cwd()

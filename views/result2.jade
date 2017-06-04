@@ -25,10 +25,10 @@ h3 Libraries
             p.long_pn(data-toggle='tooltip' title=obj['Standard Package'].toString().replace(/\//g,' / '))= obj['Standard Package'].substr(0, 30) + '...'
         -}
         - else
-          td= obj['Package']
+          td= obj['Standard Package']
         - if (obj['Standard Package'].length > 32) {
           td
-            p.long_pn(data-toggle='tooltip' title=obj['Standard Package'].toString().replace(/\//g,' / '))= obj['Package'].substr(0, 30) + '...'
+            p.long_pn(data-toggle='tooltip' title=obj['Package'].toString().replace(/\//g,' / '))= obj['Package'].substr(0, 30) + '...'
         -}
         - else
           td= obj['Package']
