@@ -122,7 +122,7 @@ router.post('/uploading2', function(req, res, next){
               file_original_name = inputFile.originalFilename;
               app_log.warn(uploadedPath + "," + getClientIp(req) + "," + file_original_name);
             } else {
-              console.err('not Array!');
+              console.log('not Array!');
               return;
             }
         }
